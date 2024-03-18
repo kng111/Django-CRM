@@ -13,26 +13,26 @@
 
 
 <p class="card-text">
-<strong>Email: </strong>{{ customer_record.email }}</p>
+<strong>ФИО: </strong>{{ customer_record.email }}</p>
 
 <p class="card-text">
-<strong>Phone: </strong>{{ customer_record.phone }}
+<strong>Телефон: </strong>{{ customer_record.phone }}
 </p>
 
 <p class="card-text">
-<strong>Address: </strong>{{ customer_record.address }}</p>
+<strong>Почта: </strong>{{ customer_record.address }}</p>
 
 <p class="card-text">
-<strong>City: </strong>{{ customer_record.city }}</p>
+<strong>Должность: </strong>{{ customer_record.city }}</p>
 
 <p class="card-text">
-<strong>State: </strong>{{ customer_record.state }}</p>
+<strong>Заметка: </strong>{{ customer_record.state }}</p>
 
 <p class="card-text">
-<strong>Zipcode: </strong>{{ customer_record.zipcode }}</p>
+<strong>Пк-id: </strong>{{ customer_record.zipcode }}</p>
 
 <p class="card-text">
-<strong>Create At: </strong>{{ customer_record.created_at }}</p>
+<strong>Создано: </strong>{{ customer_record.created_at }}</p>
 
 <p class="card-text">
 <strong>ID: </strong>{{ customer_record.id }}</p>
@@ -44,9 +44,9 @@
 <br/><br/>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 
-<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Удалить</a>
 
-<a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Update Record</a>
+<a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Изменить</a>
 		
 
 {% endblock %}

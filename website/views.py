@@ -15,10 +15,10 @@ def home(request):
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			messages.success(request, "You Have Been Logged In!")
+			messages.success(request, "Вы вошли!")
 			return redirect('home')
 		else:
-			messages.success(request, "There Was An Error Logging In, Please Try Again...")
+			messages.success(request, "Произошла ошибка при входе В Систему, Пожалуйста, повторите Попытку...")
 			return redirect('home')
 	else:
 		return render(request, 'home.html', {'records':records})
@@ -27,7 +27,7 @@ def home(request):
 
 def logout_user(request):
 	logout(request)
-	messages.success(request, "You Have Been Logged Out...")
+	messages.success(request, "Вы вышли из системы...")
 	return redirect('home')
 
 
@@ -41,7 +41,7 @@ def register_user(request):
 			password = form.cleaned_data['password1']
 			user = authenticate(username=username, password=password)
 			login(request, user)
-			messages.success(request, "You Have Successfully Registered! Welcome!")
+			messages.success(request, "Вы Успешно Зарегистрировались! Добро пожаловать!")
 			return redirect('home')
 	else:
 		form = SignUpForm()
@@ -57,7 +57,7 @@ def customer_record(request, pk):
 		customer_record = Record.objects.get(id=pk)
 		return render(request, 'record.html', {'customer_record':customer_record})
 	else:
-		messages.success(request, "You Must Be Logged In To View That Page...")
+		messages.success(request, "Вы Должны Войти В Систему, Чтобы Просмотреть Эту Страницу...")
 		return redirect('home')
 
 
@@ -66,10 +66,10 @@ def delete_record(request, pk):
 	if request.user.is_authenticated:
 		delete_it = Record.objects.get(id=pk)
 		delete_it.delete()
-		messages.success(request, "Record Deleted Successfully...")
+		messages.success(request, "Запись удаленна...")
 		return redirect('home')
 	else:
-		messages.success(request, "You Must Be Logged In To Do That...")
+		messages.success(request, "Нужно войти всистему...")
 		return redirect('home')
 
 
@@ -79,11 +79,11 @@ def add_record(request):
 		if request.method == "POST":
 			if form.is_valid():
 				add_record = form.save()
-				messages.success(request, "Record Added...")
+				messages.success(request, "Запись добавленна...")
 				return redirect('home')
 		return render(request, 'add_record.html', {'form':form})
 	else:
-		messages.success(request, "You Must Be Logged In...")
+		messages.success(request, "Вы должны войти в систему...")
 		return redirect('home')
 
 
@@ -93,9 +93,9 @@ def update_record(request, pk):
 		form = AddRecordForm(request.POST or None, instance=current_record)
 		if form.is_valid():
 			form.save()
-			messages.success(request, "Record Has Been Updated!")
+			messages.success(request, "Запись обновленна!")
 			return redirect('home')
 		return render(request, 'update_record.html', {'form':form})
 	else:
-		messages.success(request, "You Must Be Logged In...")
+		messages.success(request, "Вы должны войти в систему...")
 		return redirect('home')

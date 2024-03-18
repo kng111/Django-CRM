@@ -1,0 +1,1 @@
+cmd /k python "C:\Users\yakvl\Documents\GitHub\Django-CRM\manage.py" runserver
